@@ -1,3 +1,6 @@
 .vscode
 .venv
 eventique.egg-info
+build
+dist
+venv

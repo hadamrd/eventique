@@ -1,10 +1,21 @@
 from setuptools import find_packages, setup
+import os
+here = os.path.abspath(os.path.dirname(__file__))
+version_path = os.path.join(here, 'VERSION')
+readme_path = os.path.join(here, 'README.md')
+requirements_path = os.path.join(here, 'requirements.txt')
+with open(readme_path, 'r') as readme_file:
+    readme = readme_file.read()
+with open(requirements_path, 'r') as requirements_file:
+    requirements = requirements_file.read().splitlines()
+with open(version_path, 'r') as version_file:
+    version = version_file.read().strip()
 
 setup(
     # Application name:
     name="eventique",
     # Version number (initial):
-    version=open("./VERSION").read(),
+    version=version,
     # Application author details:
     author="MAJDOUB Khalid",
     author_email="majdoub.khalid@gmail.com",
@@ -17,12 +28,13 @@ setup(
     #
     # license="LICENSE.txt",
     description="Light and standalone python events manager.",
-    long_description=open("README.md").read(),
+    long_description=readme,
+    long_description_content_type='text/markdown',
     # Dependent packages (distributions)
-    install_requires=open("./requirements.txt").readlines(),
+    install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: Windows",
+        'Intended Audience :: Developers',
     ]
 )
